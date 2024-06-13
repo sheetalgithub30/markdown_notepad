@@ -1,12 +1,14 @@
 import React from "react";
 
-export default function Note({ index, title, delNote, changeCurrent }) {
+export default function Note({ index, title, delNote, changeCurrent,isSelected}) {
   return (
-    <div>
+    <>
+    <button id="edit" onClick={() => {changeCurrent(index)}} className={isSelected ? "selected" :""}>
+    <div id="new">
       <h3>{title}</h3>
-      <button onClick={() => delNote(index)}>Delete</button>
-      <button onClick={() => changeCurrent(index)}>Edit</button>
-      <hr />
-    </div>
+      <i class="fa-solid fa-trash" onClick={() => delNote(index)} ></i>
+      </div>
+    </button>
+    </>
   );
 }

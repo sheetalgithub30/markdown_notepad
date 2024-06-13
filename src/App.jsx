@@ -1,6 +1,8 @@
 import MDEditor from "@uiw/react-md-editor";
 import { useState ,useEffect} from "react";
 import Note from "./components/Note";
+import './App.css'
+
 function App() {
 
   const [notes, setNotes] = useState(
@@ -37,7 +39,7 @@ function App() {
   const modifyTheCurrentNote = (text) => {
     let temp = [...notes];
     temp[currentNote].content = text;
-    temp[currentNote].title = text.split("\n")[0];
+    temp[currentNote].title = text.split("\n")[0]; 
     setNotes(temp);
   };
 
@@ -60,13 +62,17 @@ function App() {
   return (
     <div id="main">
       <div id="left">
-        <h1>Notes</h1> <button onClick={addNote}> Add Note</button>
+      <div id="head">
+      <h1>Notes</h1>
+        <i class="fa-solid fa-circle-plus" onClick={addNote}></i>
+      </div>
         {notes.map((item, index) => (
           <Note
             title={item.title}
             index={index}
             delNote={deleteNote}
             changeCurrent={changeCurrent}
+            isSelected ={index == currentNote ? true : false}
           />
         ))}
       </div>
